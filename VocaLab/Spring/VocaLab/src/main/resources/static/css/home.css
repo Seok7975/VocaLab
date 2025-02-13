@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 80%;
+    min-width: 600px;
+    max-width: 900px;
+}
+
+.file-icon {
+    cursor: pointer;
+    margin-right: 5px;
+}
+/* 파일 코멘트 영역 */
+.file-comment {
+    font-size: 10px;
+    max-width: 900px;
+    min-width: 600px;
+    width: 80%;
+    padding-left: 10px;
+}
+
+.input-group input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    min-width: 60%;
+}
+
+.btn-extract {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 5px;
+    width: 100px;
+    font-size: 18px;
+}
+
+.btn-extract img {
+    vertical-align: middle;
+}
+
+/*global*/
+/*.btn-extract:hover {*/
+/*    background-color: #979595;*/
+/*}*/
+
+#banner {
+    width: 100%;
+}
+
+/* 단어 추출 기록 불러오기 */
+.user-record {
+    background-color: #cccccc;
+    border: none;
+    color: black;
+}
+
+/* 로딩 화면 전체를 덮는 스타일 */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 최상위로 배치 */
+}
+
+
+
+/* 로딩 내용 스타일 */
+.loading-content {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 점 애니메이션 */
+.dots::after {
+    content: ""; /* 점 추가 */
+    display: inline-block;
+    animation: dots 1.5s steps(3, end) infinite; /* 애니메이션 효과 */
+}
+
+/* 애니메이션 정의 */
+@keyframes dots {
+    0% {
+        content: ""; /* 처음에는 점 없음 */
+    }
+    33% {
+        content: "."; /* 첫 번째 점 */
+    }
+    66% {
+        content: ".."; /* 두 번째 점 */
+    }
+    100% {
+        content: "..."; /* 세 번째 점 */
+    }
+}
+
+

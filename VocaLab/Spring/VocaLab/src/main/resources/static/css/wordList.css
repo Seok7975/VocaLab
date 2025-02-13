@@ -1,0 +1,130 @@
+.py-4 {
+    padding: 1rem;
+    width: 85%;
+    margin: 0 auto;
+}
+.action-buttons {
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;  /* 공간이 부족할 경우 줄바꿈 */
+    gap: 10px;
+}
+
+.search-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;  /* 공간이 부족할 경우 줄바꿈 */
+    min-width: 0;     /* flex item이 부모 너비를 초과하지 않도록 */
+}
+
+#searchInput {
+    min-width: 150px;  /* 검색창 최소 너비 설정 */
+    flex: 1;
+}
+#wordbook-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
+    display: flex;           /* 추가 */
+    justify-content: center; /* 추가 */
+    align-items: center;     /* 추가 */
+    gap: 10px;              /* 추가 */
+}
+
+#btnEditTitle {
+    padding: 4px 8px;       /* 추가 */
+    font-size: 0.9rem;      /* 추가 */
+}
+
+.fa-edit {
+    color: #3498db;         /* 추가 */
+}
+.word-table {
+    width: 85%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.word-table th, .word-table td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.word-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.highlight {
+    background-color: #ffecb3 !important;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    gap: 10px; /* 버튼 및 입력창 간 간격 */
+    margin-bottom: 15px;
+}
+
+/*.search-section {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*}*/
+
+
+.restore-btn {
+    margin-left: auto; /* 오른쪽 끝으로 이동 */
+}
+
+
+/*.search-section input {*/
+/*    flex: 1;*/
+/*}*/
+
+.infinite-scroll-container {
+    height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.infinite-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+#selectedWordsModal {
+    position: fixed;
+    top: 10%;
+    right: 2%;
+    width: 25%;
+    height: 70%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#selectedWordsModal::-webkit-scrollbar {
+    display: none;
+}
+.fa-star {
+    font-size: 0.8em;
+    margin-left: 8px;
+    vertical-align: top;
+}

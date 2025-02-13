@@ -1,0 +1,344 @@
+/* 전체 페이지 설정 */
+.page-container {
+    display: flex;
+    position: relative; /* 왼쪽 섹션 고정용 */
+}
+
+#section {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0 10px 30px;
+}
+
+.wordbook-list input[type="checkbox"],
+.compile-result-voca,
+.choose-voca input[type="checkbox"]{
+    display:none;
+}
+
+/* 왼쪽 섹션 스타일 */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*너비*/
+    width: auto;
+    min-width: 220px; /* 고정 너비 */
+    max-width: 300px;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    overflow: hidden; /* 텍스트가 넘치면 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 '...' 표시 */
+    /*높이*/
+    height: 350px; /* 최소 높이 */
+    overflow-y: visible; /* 최대 높이를 초과하면 스크롤 활성화 */
+    position: sticky; /* 스크롤을 따라 내려가도록 설정 */
+    top: 0; /* 상단 고정 */
+    padding: 10px;
+    background-color: #efefef;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+/* 단어장 목록 버튼 스타일 */
+.wordbook-list-btn::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: grey;
+    transition: width 0.3s;
+}
+
+ h3 {
+     margin: 0;
+     margin-bottom: 10px;
+     border-bottom: 1px solid;
+ }
+.selected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#selected-wordbook {
+    margin: 10px auto 0 auto;
+}
+
+button {
+    width: 120px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#add-words-btn {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#now-wordbook{
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    font-size: 24px; /* 글자 크기 조정 */
+    width: auto;
+}
+
+/* 오른쪽 섹션 스타일 */
+.right-section {
+    flex: 1; /* 남은 공간을 채움 */
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 테이블 위 */
+.table-top {
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 뜻 숨기기 토글 스위치 */
+.meaning-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+#toggle{
+    appearance: none;
+    position: relative;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 1.25em;
+    width: 2.25em;
+    height: 1.25em;
+}
+
+#toggle::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: gray;
+    transition: left 250ms linear;
+}
+
+#toggle:checked::before {
+    background-color: white;
+    left: 1em;
+}
+
+#toggle:checked {
+    background-color: tomato;
+    border-color: tomato;
+}
+
+/* 전체선택 / 선택해제 */
+.choose-voca {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#all-checked-click, #all-unchecked-click {
+    cursor: pointer;
+}
+
+#all-checked-click:hover, #all-unchecked-click:hover {
+    color: gray;
+}
+
+#all-checked-click::after, #all-unchecked-click::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: grey;
+    transition: width 0.3s;
+}
+
+#all-checked-click:hover::after, #all-unchecked-click:hover::after {
+    width: 100%;
+}
+
+/* 단어 테이블 */
+.word-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.word-table td {
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.word-table td:hover {
+    background: lightgrey;
+    border: 1px solid white;
+}
+
+.word-table td.selectedWord {
+    background: grey;
+    color: white;
+    border: 1px solid white;
+}
+
+/* 모달창 스타일 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 화면 고정 위치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 배경 */
+    z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+}
+
+.modal-content {
+    position: absolute; /* 위치 고정을 위한 설정 */
+    top: 50%; /* 화면의 세로 중앙 */
+    left: 50%; /* 화면의 가로 중앙 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    background: #f0f0f0; /* 모달 배경색 */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* 너비 설정 */
+    max-width: 400px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 약간의 그림자 추가 */
+}
+
+.modal-header {
+    display: flex; /* 헤더 정렬을 위한 flex 설정 */
+    justify-content: space-between; /* 헤더 양쪽 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.modal-header h3 {
+    font-size: 20px;
+    margin: 0; /* 여백 제거 */
+    text-align: center; /* 가운데 정렬 */
+    flex-grow: 1; /* 헤더 가운데 위치 */
+}
+
+.modal-header img {
+    cursor: pointer; /* 닫기 버튼 */
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wordbook-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.wordbook-list> li {
+    margin-bottom: 5px;
+}
+
+.modal-buttons {
+    margin-top: 5px;
+    display: flex; /* 버튼 정렬을 위한 flex 설정 */
+    justify-content: center;
+}
+
+.modal-buttons > .add-btn,.delete-btn {
+    width: 80px;
+}
+
+.modal-buttons > .confirm-btn,.cancel-btn {
+    font-size: 13px;
+    width: 90px;
+}
+
+.modal-buttons button:hover {
+    background: lightgray; /* 마우스 오버 시 배경 색 변경 */
+}
+
+.wordbook-name {
+    cursor: pointer;
+}
+
+/*.wordbook-name:hover {*/
+/*    color: grey;*/
+/*}*/
+
+/*.wordbook-name::after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    width: 0;*/
+/*    height: 1px;*/
+/*    background-color: grey;*/
+/*    transition: width 0.3s;*/
+/*}*/
+
+/*.wordbook-name:hover::after {*/
+/*    width: 100%;*/
+/*}*/
+
+/* 체크박스가 체크되었을 때 */
+.choose-wordbook:checked + .wordbook-name {
+    color: tomato; /* 글자 색 파란색으로 변경 */
+    text-decoration: underline; /* 밑줄 추가 */
+}
+
+
+/* 단어 테이블 컨테이너 */
+.word-table-container {
+    height: 400px; /* 고정된 높이 */
+    overflow-y: auto; /* 스크롤 허용 */
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* 테이블 셀 스타일 */
+.word-table {
+    width: 100%; /* 테이블 전체 너비 */
+    border-collapse: collapse; /* 셀 간격 제거 */
+}
+
+.word-table th, .word-table td {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    width: 25%; /* 각 열 너비를 동일하게 설정 (4열 기준) */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
+.word-table td {
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.word-table td:hover {
+    background: lightgrey;
+}
+
+.vocabulary {
+    cursor: pointer;
+}
+
+.mouse-cursor{
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8); /* 반투명 검은 배경 */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none; /* 마우스 이벤트를 차단 */
+    z-index: 1000;
+}
+

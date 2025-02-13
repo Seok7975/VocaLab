@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'NanumSquareNeo-Variable', sans-serif;
+    margin-top: 40px;
+    padding: 0;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    height: 100vh;
+    background-color: #f9f9f9;
+    flex-direction: column
+}
+
+button{
+    height: 35px;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #979595;
+}
+
+input[type="text"] {
+    height: 20px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration-line: none;
+    text-decoration-color: black;
+}
+
+/*bottom 조절을 위한 css*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 100% 높이를 설정 */
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column; /* 콘텐츠와 bottom을 수직 정렬 */
+    min-height: 100%; /* 페이지가 화면 전체를 채우도록 설정 */
+}
+
+/* 콘텐츠 영역 */
+.container {
+    flex: 1; /* 남은 공간을 채움 */
+    padding: 20px;
+}
+
+/* bottom 배너 스타일 */
+.banner_bottom {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #555;
+}

@@ -1,0 +1,278 @@
+/* 공통 스타일 */
+
+.mypage-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mypage-main-container {
+    display: flex;
+    height: auto;
+    min-height: 700px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.mypage-line{
+    border-bottom: 1px solid #d3d3d3;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    min-width: 200px;
+    background-color: #f4f4f4;
+    padding-top: 20px;
+    min-height: 700px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sidebar .menu-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+.sidebar .menu-item.active {
+    background-color: #919090;
+    font-weight: bold;
+}
+
+.right-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+select-all {
+    margin-bottom: 20px;
+}
+
+.withdraw {
+    font-size: 11px;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+/*history.jsp*/
+.word-history-page, .member-edit-page, .member-info-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.select-all {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+
+#deleteSelect,#select-all-a,#deselect-a {
+    cursor: pointer;
+    font-size: 17px;
+}
+
+#deleteSelect {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#deleteSelect:hover,#select-all-a:hover,#deselect-a:hover {
+    border-bottom: 1px solid #cccccc;
+    color: #cccccc;
+}
+
+#record-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ul {
+    width: 80%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    font-size: 20px;
+    background-color: #cccccc;
+    width: 100%;
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #919090;
+}
+
+.noHistory {
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #495057;
+}
+
+.noHistory>a {
+    margin-top: 5px;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid #5f6368;
+}
+
+.noHistory>a:hover {
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+/*userInfo.jsp*/
+.member-info-list{
+    display: flex;
+    align-items: center;
+}
+
+.member-info-page form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.users{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 17px;
+}
+
+.info-list div, .info-list label{
+    height: 22px;
+
+}
+
+.users div, .info-list label{
+    margin-bottom: 2px;
+    padding-top: 3px;
+    /*text-align: center;*/
+}
+.user div{
+    width: 200px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+input[type="password"], input[type="text"], input[type="email"]
+, input[type="date"]{
+    width: 100%;
+    height: 22px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+/*userModify.jsp*/
+.member-edit-page form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-list{
+    display: flex;
+    align-items: center;
+}
+
+.edit-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.edit-menu label{
+    font-size: 17px;
+    margin-bottom: 4px;
+    padding-top: 6px;
+    height: 22px;
+}
+
+.edit-data{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-data input{
+    width: 200px;
+    margin-left: 5px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.modify-submitBtn, .withdraw, #modifyBtn{
+    cursor: pointer;
+}
+
+/*modify 탈퇴*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.modal button {
+    margin-top: 10px;
+}

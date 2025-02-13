@@ -1,0 +1,96 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'war'
+}
+apply plugin:'war'
+bootWar {
+    archiveBaseName = 'Vocalab'
+    archiveFileName = 'VocaLab.war'
+    archiveVersion = "0.0.0"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from('src/main/resources/static') {
+        into('WEB-INF/classes/static')
+        include '**/*.css'
+        include '**/*.js'
+        include '**/*.png'
+        include '**/*.jpg'
+        include '**/*.jpeg'
+        include '**/*.gif'
+    }
+    from('src/main/webapp') {  // webapp 디렉토리의 리소스도 포함
+        into('/')
+    }
+}
+
+group = 'com.dev'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+// jdbc
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+//    DevTool, Lombok, Spring Boot Starter, JUnit
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+// JSP
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+//    JSON, CSV, Files
+    implementation 'com.googlecode.json-simple:json-simple:1.1'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'com.opencsv:opencsv:5.7.1'
+
+//     security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.security:spring-security-taglibs'
+
+// oauth2
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+    implementation 'org.springframework.security:spring-security-oauth2-client'
+
+//      json
+    implementation 'org.json:json:20211205'
+//          Jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    // Mail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
