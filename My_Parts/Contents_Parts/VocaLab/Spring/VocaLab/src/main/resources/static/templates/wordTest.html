@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>단어 테스트</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .question-card {
+            margin-bottom: 20px;
+        }
+        .choices {
+            margin-top: 15px;
+        }
+        .result-feedback {
+            display: none;
+            margin-top: 10px;
+        }
+        .submit-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div id="testContainer">
+        <div id="testHeader" class="text-center mb-4">
+            <h2>단어 테스트</h2>
+            <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+            </div>
+        </div>
+        <div id="testContent"></div>
+        <div class="submit-section">
+            <button id="submitTest" class="btn btn-primary">제출하기</button>
+        </div>
+        <div id="resultSection" class="mt-4" style="display: none;">
+            <h3 class="text-center">테스트 결과</h3>
+            <div id="scoreDisplay" class="text-center mb-4"></div>
+            <div id="resultDetails"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // 세션 스토리지에서 테스트 데이터 가져오기
+        const testData = JSON.parse(sessionStorage.getItem('testData'));
+        const testType = sessionStorage.getItem('testType');
+
+        if (!testData || !testType) {
+            alert('테스트 데이터가 없습니다.');
+            window.location.href = '/contents/wordTest';
+            return;
+        }
+
+        // 테스트 유형에 따른 문제 선택
+        const questions = testType === 'meaning' ? testData.eng_to_kor : testData.kor_to_eng;
+        const testTypeTitle = testType === 'meaning' ? '영어 → 한글' : '한글 → 영어';
+
+        $('#testHeader h2').text(testTypeTitle + ' 테스트');
+
+        // 문제 렌더링
+        questions.forEach((question, index) => {
+            const questionHtml = createQuestionHTML(question, index);
+            $('#testContent').append(questionHtml);
+        });
+
+        // 제출 버튼 클릭 이벤트
+        $('#submitTest').click(function() {
+            let score = 0;
+            let total = questions.length;
+
+            questions.forEach((question, index) => {
+                const selectedAnswer = $(`input[name="question${index}"]:checked`).val();
+                const questionCard = $(`#question${index}`);
+                const feedback = questionCard.find('.result-feedback');
+
+                if (selectedAnswer === undefined) {
+                    feedback.html('<div class="alert alert-warning">답을 선택해주세요.</div>');
+                    feedback.show();
+                    return;
+                }
+
+                if (parseInt(selectedAnswer) === question.correct_answer) {
+                    score++;
+                    feedback.html('<div class="alert alert-success">정답입니다!</div>');
+                } else {
+                    feedback.html(`<div class="alert alert-danger">
+                            오답입니다. 정답: ${question.choices[question.correct_answer]}
+                        </div>`);
+                }
+                feedback.show();
+            });
+
+            // 결과 표시
+            const percentage = (score / total * 100).toFixed(1);
+            $('#scoreDisplay').html(`
+                    <h4>총점: ${score}/${total} (${percentage}%)</h4>
+                `);
+            $('#resultSection').show();
+            $('#submitTest').prop('disabled', true);
+
+            // 진행률 바 업데이트
+            $('.progress-bar').css('width', `${percentage}%`);
+            $('.progress-bar').text(`${percentage}%`);
+        });
+    });
+
+    function createQuestionHTML(question, index) {
+        let html = `
+                <div id="question${index}" class="card question-card">
+                    <div class="card-body">
+                        <h5 class="card-title">문제 ${index + 1}</h5>
+                        <p class="card-text">${question.word}</p>
+                        <div class="choices">
+            `;
+
+        question.choices.forEach((choice, i) => {
+            html += `
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio"
+                            name="question${index}"
+                            value="${i}"
+                            id="choice${index}_${i}">
+                        <label class="form-check-label" for="choice${index}_${i}">
+                            ${choice}
+                        </label>
+                    </div>
+                `;
+        });
+
+        html += `
+                        </div>
+                        <div class="result-feedback"></div>
+                    </div>
+                </div>
+            `;
+        return html;
+    }
+</script>
+</body>
+</html>
