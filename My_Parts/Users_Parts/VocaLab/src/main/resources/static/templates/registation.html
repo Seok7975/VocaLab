@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <!--    <link rel="stylesheet" type="text/css" href="/css/login/styles2.css">-->
+<!--    <link href="/main.css" rel="stylesheet">-->
+</head>
+<body>
+<h1>Sign in</h1>
+<form action="/register" method="post">
+    <!-- userName(Id) 입력란 -->
+    <div class="userId">
+        <label for="userId">ID</label>
+        <input type="text" id="userId" name="userId" placeholder="Enter Your ID" autocomplete="off" required>
+    </div>
+    <!-- Password 입력란 -->
+    <div class="userPassword">
+        <label for="userPassword">Password</label>
+        <input type="password" id="userPassword" name="userPassword" placeholder="Enter Your Password" autocomplete="off" required>
+    </div>
+    <!-- userName(이름) 입력란 -->
+    <div class="userName">
+        <label for="userName">Name</label>
+        <input type="text" id="userName" name="userName" placeholder="Enter Your Name" autocomplete="off" required>
+    </div>
+    <!-- userNickname(닉네임) 입력란 -->
+    <div class="userNickname">
+        <label for="userNickname">이름</label>
+        <input type="text" id="userNickname" name="userNickname" placeholder="Enter Your NickName" autocomplete="off" required>
+    </div>
+    <!-- userEmail(이메일) 입력란 유효성검사 필요-->
+    <div class="userEmail">
+        <label for="userEmail">이름</label>
+        <input type="text" id="userEmail" name="userEmail" placeholder="Enter Your userEmail" autocomplete="off" required>
+    </div>
+    <!-- birthDate(생일) 입력란 -->
+    <div class="birthDate">
+        <label for="birthDate">이름</label>
+        <input type="text" id="birthDate" name="birthDate" placeholder="Enter Your birthDate" autocomplete="off" required>
+    </div>
+    <!-- gender(성별) 입력란 -->
+    <div class="gender">
+        <label for="gender">이름</label>
+        <input type="text" id="gender" name="gender" placeholder="Enter Your gender" autocomplete="off" required>
+    </div>
+    <!-- Submit 버튼 -->
+    <button type="submit" class="submit-btn">Sign up</button>
+</form>
+</body>
+</html>
