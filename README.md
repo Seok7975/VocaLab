@@ -39,6 +39,8 @@
 - UI : <img src="https://img.shields.io/badge/Figma-F05032?style=flat&logo=figma&logoColor=white" />
 
 - 기타: <img src="https://img.shields.io/badge/Gemini API-8E75B2?style=flat&logo=google gemini&logoColor=white" />
+
+<!--
 ## VocaLab 주요 기능
 
 ### 회원가입/회원탈퇴
@@ -77,4 +79,6 @@
 > - 
 > - 
 > - 
+
+-->
 
